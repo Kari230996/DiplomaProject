@@ -8,9 +8,10 @@ def index(request):
     gallery = Gallery.objects.order_by('-created_at')
     context = {
         'gallery': gallery,
-          'title': 'My Gallery'
+          'title': 'Homepage'
           }
     return render(request, 'gallery/index.html', context)
+
 
 
 
