@@ -13,32 +13,52 @@
 
     {% csrf_token %}
 
-    {% comment %}
     {{ form.as_p }}
-    {% endcomment %}
+  
 
+
+    {% comment %}
+    {{ form.non_field.errors }}
     <div class="mb-3">
-        <label for="{{ form.name.id_for_label }}" class="form-label">Name </label>
+        <label for="{{ form.name.id_for_label }}" class="form-label">Name: </label>
         {{ form.name }}
         <div class="invalid-feedback">
             {{ form.name.errors}}
         </div>
 
     
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <label for="{{ form.email.id_for_label }}" class="form-label">Email: </label>
+        {{ form.email }}
+        <div class="invalid-feedback">
+            {{ form.email.errors}}
+        </div>
 
 
-        <label for="{{ form.subject.id_for_label }}" class="form-label">Subject </label>
+        <label for="{{ form.subject.id_for_label }}" class="form-label">Subject: </label>
         {{ form.subject }}
 
-        <label for="{{ form.message.id_for_label }}" class="form-label">Message </label>
+        <label for="{{ form.message.id_for_label }}" class="form-label">Message: </label>
         {{ form.message }}
         <div class="invalid-feedback">
             {{ form.message.errors}}
         </div>
         
     </div>
+    {% endcomment %}
+
+    {% comment %}
+    <div class="mb-3">
+    {% for field in form %}
+     
+       {{ field.label_tag }}
+       {{ field }}
+       <div class="invalid-feedback">
+        {{ field.errors}}
+       </div>
+
+    {% endfor %}
+    </div>
+    {% endcomment %}
     
 
     <button type="submit" class="btn btn-primary btn-block">Send</button>

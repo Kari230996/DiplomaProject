@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+
 
 from .models import Gallery
 from .forms import ContactForm
@@ -24,7 +25,13 @@ def about_us(request):
 
 def contacts(request):
     if request.method == 'POST':
-        pass
+        form = ContactForm(request.POST)
+        '''
+        if form.is_valid():
+            #print(form.cleaned_data)
+            Gallery.objects.create(**form.cleaned_data)
+            return redirect('home')
+        '''
     else:
         form = ContactForm()
     
