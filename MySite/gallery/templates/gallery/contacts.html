@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Contacts :: {{ block.super }}
+{% endblock %}
+
+
+
+{% block content %} 
+<h1>Contact us</h1>
+
+<form action="{% url 'contacts' %}" method="post">
+
+    {% csrf_token %}
+
+    {% comment %}
+    {{ form.as_p }}
+    {% endcomment %}
+
+    <div class="mb-3">
+        <label for="{{ form.name.id_for_label }}" class="form-label">Name </label>
+        {{ form.name }}
+        <div class="invalid-feedback">
+            {{ form.name.errors}}
+        </div>
+
+    
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+
+
+        <label for="{{ form.subject.id_for_label }}" class="form-label">Subject </label>
+        {{ form.subject }}
+
+        <label for="{{ form.message.id_for_label }}" class="form-label">Message </label>
+        {{ form.message }}
+        <div class="invalid-feedback">
+            {{ form.message.errors}}
+        </div>
+        
+    </div>
+    
+
+    <button type="submit" class="btn btn-primary btn-block">Send</button>
+</form>
+
+{% endblock %}
