@@ -10,6 +10,8 @@ class Gallery(models.Model):
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     is_published = models.BooleanField(default=True)
 
+    
+
  
 
     def __str__(self):
