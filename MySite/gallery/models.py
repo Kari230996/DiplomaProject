@@ -22,3 +22,4 @@ class Gallery(models.Model):
     class Meta:
         verbose_name = 'Painting'
         verbose_name_plural = 'Paintings'
+        ordering = ['-created_at']
