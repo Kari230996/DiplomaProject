@@ -1,11 +1,20 @@
+from django.core.mail import send_mail, EmailMessage
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DeleteView, CreateView
+from django.views.generic import ListView
+from django.conf import settings
 
 
 from .models import Gallery
 from .forms import ContactForm
+
+
+
+
+
+    
 
 
 class HomeGallery(ListView):
@@ -14,11 +23,13 @@ class HomeGallery(ListView):
     context_object_name = 'gallery'
     #extra_content = {'title': 'Home'}
     #queryset = Gallery.objects.select_related('is_published')
+    
 
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Homepage'
+        
         return context
     
     def get_queryset(self):
@@ -66,15 +77,36 @@ def about_us(request):
 def contacts(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
-#        '''
-#        if form.is_valid():
-#            #print(form.cleaned_data)
-#            Gallery.objects.create(**form.cleaned_data)
-#            return redirect('home')
-#        '''
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+            print(f"Name: {name}")
+            print(f"Email: {email}")
+            print(f"Subject: {subject}")
+            print(f"Message: {message}")
+            try:
+                # Create a new email message
+                msg = EmailMessage(
+                    
+                    subject=subject,
+                    body=f"Name: {name}\nEmail: {email}\nMessage:\n {message}",
+                    from_email=email,
+                    to=[settings.MY_EMAIL_ADDRESS],
+                    reply_to=[email],
+                )
+                # Send the email
+                msg.send()
+                messages.success(request, 'Your message has been sent')
+                return redirect('contacts')
+            except Exception as e:
+                messages.error(request, 'An error occurred while sending the email')
+                print(f"Error: {e}")
+        else:
+            messages.error(request, 'Invalid form data')
     else:
-       form = ContactForm()
-   
+        form = ContactForm()
     return render(request, 'gallery/contacts.html', {'form': form})
 
 

@@ -10,6 +10,8 @@ class GalleryAdmin(admin.ModelAdmin):
     search_fields = ('title', 'content')
     list_editable = ('is_published',)
     list_filter = ('is_published',)
+    #fields = ('id', 'title', 'created_at', 'updated_at', 'is_published', 'get_photo')
+    
   
     def get_photo(self, obj):
         if obj.photo:

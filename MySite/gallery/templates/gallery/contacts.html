@@ -1,12 +1,24 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    {{ title }} :: {{ block.super }}
+    Contact :: {{ block.super }}
 {% endblock %}
 
 
 
+
 {% block content %} 
+
+
+{% if messages %}
+  <div class="alert alert-success" role="alert">
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+  </div>
+{% endif %}
+
+
 <h1>Contact us</h1>
 
 <form action="{% url 'contacts' %}" method="post">
