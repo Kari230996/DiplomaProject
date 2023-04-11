@@ -1,8 +1,14 @@
+from django import forms
 from django.contrib import admin
 from .models import Gallery
 from django.utils.safestring import mark_safe
 
+
 # Register your models here.
+
+
+
+
 
 class GalleryAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'created_at', 'updated_at', 'is_published', 'get_photo')

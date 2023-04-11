@@ -13,10 +13,6 @@ from .forms import ContactForm
 
 
 
-
-    
-
-
 class HomeGallery(ListView):
     model = Gallery
     template_name = 'gallery/home_gallery_list.html'
@@ -82,14 +78,13 @@ def contacts(request):
             email = form.cleaned_data['email']
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
-            print(f"Name: {name}")
-            print(f"Email: {email}")
-            print(f"Subject: {subject}")
-            print(f"Message: {message}")
+            # print(f"Name: {name}")
+            # print(f"Email: {email}")
+            # print(f"Subject: {subject}")
+            # print(f"Message: {message}")
             try:
                 # Create a new email message
                 msg = EmailMessage(
-                    
                     subject=subject,
                     body=f"Name: {name}\nEmail: {email}\nMessage:\n {message}",
                     from_email=email,
@@ -98,17 +93,17 @@ def contacts(request):
                 )
                 # Send the email
                 msg.send()
-                messages.success(request, 'Your message has been sent')
+
+                messages.success(request, 'Your message has been sent', extra_tags='alert-success')
                 return redirect('contacts')
             except Exception as e:
-                messages.error(request, 'An error occurred while sending the email')
+                messages.error(request, f'An error occurred while sending the email: {str(e)}', extra_tags='danger')
                 print(f"Error: {e}")
         else:
-            messages.error(request, 'Invalid form data')
+            messages.error(request, 'Invalid form data', extra_tags='danger')
     else:
         form = ContactForm()
     return render(request, 'gallery/contacts.html', {'form': form})
-
 
 
 

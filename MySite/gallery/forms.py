@@ -1,7 +1,7 @@
 from django import forms
 import re
 from django.core.exceptions import ValidationError
-
+from captcha.fields import CaptchaField
 
 class ContactForm(forms.Form):
     
@@ -9,7 +9,7 @@ class ContactForm(forms.Form):
     email = forms.CharField(max_length=50, label='Email', widget=forms.EmailInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Email'}))
     subject = forms.CharField(max_length=50, label='Subject', required=False, widget=forms.TextInput(attrs={"class": "form-control mb-3", 'placeholder': 'Subject'}))
     message = forms.CharField(max_length=500, label='Message', widget=forms.Textarea(attrs={"class": "form-control mb-3", "rows": 5, 'placeholder': 'Write your message'}))
-    
+    captcha = CaptchaField()
     
 
 
