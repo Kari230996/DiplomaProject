@@ -46,24 +46,7 @@ class Show_gallery(ListView):
     def get_queryset(self):
         return Gallery.objects.filter(is_published=True)
 
-#class Contacts(CreateView):
-#    form_class = ContactForm
-#    template_name = 'gallery/contacts.html'
-#    success_url = reverse_lazy('home')
 
-
-# Create your views here.
-#def index(request):
-#    gallery = Gallery.objects.order_by('-created_at')
-#    context = {
-#        'gallery': gallery,
-#          'title': 'Homepage'
-#          }
-#    return render(request, 'gallery/index.html', context)
-
-
-#def show_gallery(request):
-#    return render(request, 'gallery/show_gallery.html')
 
 
 def about_us(request):
@@ -78,10 +61,7 @@ def contacts(request):
             email = form.cleaned_data['email']
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
-            # print(f"Name: {name}")
-            # print(f"Email: {email}")
-            # print(f"Subject: {subject}")
-            # print(f"Message: {message}")
+
             try:
                 # Create a new email message
                 msg = EmailMessage(
