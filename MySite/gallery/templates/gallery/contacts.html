@@ -10,7 +10,7 @@
 {% block content %} 
 
 
-<div class="col-md-5 mr-auto">
+<!-- <div class="col-md-5 mr-auto">
   <h2>Contact Us</h2>
   <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quaerat autem corrupti
     asperiores accusantium et fuga! Facere excepturi, quo eos, nobis doloremque dolor labore expedita illum
@@ -62,21 +62,21 @@
   <div id="form-message-success">
     Your message was sent, thank you!
   </div>
-</div>
+</div> -->
 
 
-<!-- {% if messages %}
+{% if messages %}
   {% for message in messages %}
     <div class="alert {% if message.tags == 'danger' %} danger{% else %}alert-success{% endif %}" role="alert">
       {{ message }}
     </div>
   {% endfor %}
-{% endif %} -->
+{% endif %}
 
 
 
 
-<!-- <h1>Contact us</h1>
+<h1>Contact us</h1>
 
 <form action="{% url 'contacts' %}" method="post">
 
@@ -137,7 +137,7 @@
     
 
 
-</form> -->
+</form>
 
 {% endblock %}
 

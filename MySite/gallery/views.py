@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView
+from django.views.generic.detail import DetailView
 from django.conf import settings
 
 
@@ -36,7 +37,8 @@ class HomeGallery(ListView):
 class Show_gallery(ListView):
     model = Gallery
     template_name = 'gallery/show_gallery.html'
-    context_object_name = 'gallery'
+    context_object_name = 'gallery'       
+
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -46,7 +48,9 @@ class Show_gallery(ListView):
     def get_queryset(self):
         return Gallery.objects.filter(is_published=True)
 
-
+class PaintingDetailView(DetailView):
+    model = Gallery
+    template_name = 'gallery/painting_detail.html'
 
 
 def about_us(request):

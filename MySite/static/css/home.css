@@ -179,10 +179,11 @@
 }
 .home-container3 {
   width: 100%;
-  height: var(--dl-size-size-maxwidth);
+  height: var(--dl-size-size-maxwidth); 
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: center; 
+  flex-wrap: wrap;
 }
 .home-hero {
   width: 100%;
@@ -400,4 +401,10 @@
     margin-right: 0px;
     margin-bottom: var(--dl-space-space-unit);
   }
+}
+
+.mb-5 {
+  margin-bottom: 3rem !important;
+  margin-top: 3rem;
+  text-align: center;
 }
