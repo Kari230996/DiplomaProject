@@ -1,6 +1,6 @@
 from django.core.mail import send_mail, EmailMessage
 from django.contrib import messages
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView
@@ -48,9 +48,13 @@ class Show_gallery(ListView):
     def get_queryset(self):
         return Gallery.objects.filter(is_published=True)
 
-class PaintingDetailView(DetailView):
-    model = Gallery
-    template_name = 'gallery/painting_detail.html'
+# class PaintingDetailView(DetailView):
+#     model = Gallery
+#     template_name = 'gallery/painting_detail.html'
+
+def painting_detail(request, pk):
+    painting = get_object_or_404(Gallery, pk=pk)
+    return render(request, 'gallery/painting_detail.html', {'painting': painting})
 
 
 def about_us(request):

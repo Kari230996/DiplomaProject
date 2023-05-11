@@ -3,17 +3,12 @@
 
 {% load static %}
 
-{% block extra_head %}
-    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
-    <script src="{% static 'js/modal.js' %}"></script>
-{% endblock %}
-
 
 
 {% block content %}
-<h1>{{ object.title }}</h1>
-<img src="{{ object.photo.url }}" alt="{{ object.title }}" />
-<p>{{ object.content }}</p>
+<h1>{{ painting.title }}</h1>
+<img src="{{ painting.photo.url }}" alt="{{ painting.title }}" />
+<p>{{ painting.content }}</p>
 
 <a href="{% url 'show_gallery' %}" style="text-decoration: underline;">Back</a>
 {% endblock %}

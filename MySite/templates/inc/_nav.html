@@ -1,12 +1,14 @@
 
   <div class="home-container1">
     <header data-role="Header" class="home-header">
-      <img
-        alt="logo"
-        src="https://play.teleporthq.io/static/svg/default-img.svg"
-        class="home-image"
-        href="{% url 'home' %}"
-      />
+      <a href="{% url 'home' %}">
+        <img
+          alt="logo"
+          src="https://play.teleporthq.io/static/svg/default-img.svg"
+          class="home-image"        
+        />
+      </a>
+      
       <div class="home-nav">
         <nav
           class="navigation-links2-nav navigation-links2-root-class-name20"
@@ -26,9 +28,12 @@
       </div>
       <div class="home-btn-group">
         <svg viewBox="0 0 1024 1024" class="home-icon">
-          <path
+          <a href="{% url 'home' %}">
+            <path
             d="M698 598h144q12-56 12-86t-12-86h-144q6 42 6 86t-6 86zM622 834q50-16 104-61t82-91h-126q-20 80-60 152zM612 598q6-42 6-86t-6-86h-200q-6 42-6 86t6 86h200zM512 852q56-82 82-170h-164q26 88 82 170zM342 342q24-86 60-152-50 16-105 61t-81 91h126zM216 682q26 46 81 91t105 61q-40-72-60-152h-126zM182 598h144q-6-42-6-86t6-86h-144q-12 56-12 86t12 86zM512 172q-56 82-82 170h164q-26-88-82-170zM808 342q-28-46-82-91t-104-61q36 66 60 152h126zM512 86q176 0 301 125t125 301-125 301-301 125-301-125-125-301 125-301 301-125z"
           ></path>
+          </a>
+          
         </svg>
       </div>
       <div data-role="BurgerMenu" class="home-burger-menu">
