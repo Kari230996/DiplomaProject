@@ -10,13 +10,11 @@ class ContactForm(forms.Form):
     subject = forms.CharField(max_length=50, label='Subject', required=False, widget=forms.TextInput(attrs={"class": "form-control mb-3", 'placeholder': 'Subject'}))
     message = forms.CharField(max_length=500, label='Message', widget=forms.Textarea(attrs={"class": "form-control mb-3", "rows": 5, 'placeholder': 'Write your message'}))
     captcha = CaptchaField()
-    
 
+    def clean_name(self):
+        name = self.cleaned_data['name']
 
-def clean_name(self):
-    name = self.cleaned_data['name']
+        if re.match(r'\d', name):
+            raise ValidationError("Your name shouldn't contain any number")
 
-    if re.match(r'\d', name):
-        raise ValidationError("Your name shouldn't contain any number")
-    
-    return name
+        return name

@@ -16,7 +16,7 @@ from .forms import ContactForm
 
 class HomeGallery(ListView):
     model = Gallery
-    template_name = 'gallery/home_gallery_list.html'
+    template_name = 'gallery/home.html'
     context_object_name = 'gallery'
     #extra_content = {'title': 'Home'}
     #queryset = Gallery.objects.select_related('is_published')
@@ -37,7 +37,8 @@ class HomeGallery(ListView):
 class Show_gallery(ListView):
     model = Gallery
     template_name = 'gallery/show_gallery.html'
-    context_object_name = 'gallery'       
+    context_object_name = 'gallery'    
+
 
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -48,9 +49,6 @@ class Show_gallery(ListView):
     def get_queryset(self):
         return Gallery.objects.filter(is_published=True)
 
-# class PaintingDetailView(DetailView):
-#     model = Gallery
-#     template_name = 'gallery/painting_detail.html'
 
 def painting_detail(request, pk):
     painting = get_object_or_404(Gallery, pk=pk)
