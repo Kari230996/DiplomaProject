@@ -1,10 +1,13 @@
+{% load static %}
+       
 
   <div class="home-container1">
+    
     <header data-role="Header" class="home-header">
       <a href="{% url 'home' %}">
         <img
           alt="logo"
-          src="https://play.teleporthq.io/static/svg/default-img.svg"
+          src="{% static 'images/logo.svg' %}"
           class="home-image"        
         />
       </a>
@@ -17,8 +20,8 @@
           <a class="navigation-links2-text1" href="{% url 'show_gallery' %}">
             <span >Gallery</span>
           </a>
-          <a class="navigation-links2-text2" href="{% url 'about-us' %}">
-            <span>About us</span>
+          <a href="{% url 'about-us' %}">
+            <span class="navigation-links2-text2">About us</span>
           </a>
           <a class="navigation-links2-text3" href="{% url 'contacts' %}">
             <span >Contact</span>

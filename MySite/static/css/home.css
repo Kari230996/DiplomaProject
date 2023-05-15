@@ -21,27 +21,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media(max-width: 767px) {
   .navigation-links2-nav {
     align-items: flex-start;
@@ -73,15 +52,18 @@
   display: flex;
   z-index: 100;
   overflow: auto;
-  box-shadow: 5px 5px 10px 0px #d4d4d4;
+  /* box-shadow: 5px 5px 10px 0px #d4d4d4; */
   min-height: 100vh;
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
+  
+  
+
 }
 .home-container1 {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   box-shadow: 5px 5px 10px 0px #d4d4d4;
   align-items: flex-start;
@@ -179,11 +161,11 @@
 }
 .home-container3 {
   width: 100%;
-  height: var(--dl-size-size-maxwidth); 
+  min-height: var(--dl-size-size-maxwidth);
   display: flex;
   align-items: flex-start;
-  justify-content: center; 
-  flex-wrap: wrap;
+  justify-content: center;
+  
 }
 .home-hero {
   width: 100%;
@@ -200,6 +182,7 @@
   background-size: cover;
   justify-content: center;
   background-image: url('https://img.freepik.com/free-photo/abstract-oil-paint-textured-background_53876-163057.jpg?w=2000&t=st=1681301836~exp=1681302436~hmac=8bfab3c6ad47d7620882147eb739961b1844526f92e3b535d4baa0e0d6f88422');
+ 
 }
 .home-text {
   color: #ffffff;
@@ -233,7 +216,7 @@
 .home-container4 {
   flex: 0 0 auto;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   box-shadow: 5px 5px 100px 0px #d4d4d4;
   align-items: flex-start;

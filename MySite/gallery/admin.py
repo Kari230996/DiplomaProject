@@ -2,6 +2,7 @@ from django import forms
 from django.contrib import admin
 from .models import Gallery
 from django.utils.safestring import mark_safe
+from django.utils.html import mark_safe
 from django_ckeditor_5.widgets import CKEditor5Widget
 
 # Register your models here.
@@ -26,7 +27,7 @@ class GalleryAdmin(admin.ModelAdmin):
     # prepopulated_fields = {"slug": ("title", )}
     form = PostAdminForm
     save_as = True
-    list_display = ('id', 'title', 'created_at', 'updated_at', 'is_published', 'get_photo')
+    list_display = ('id', 'title', 'created_at', 'updated_at', 'is_published', 'get_photo', 'get_content')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'content')
     list_editable = ('is_published',)
@@ -40,8 +41,14 @@ class GalleryAdmin(admin.ModelAdmin):
         else:
             return "-"
         
+    def get_content(self, obj):
+        return mark_safe(obj.content)
+        
+    # def content(self, obj):
+    #     return mark_safe(obj.content)
 
     get_photo.short_description = 'Photo'
+    get_content.short_description = 'Content'
 
 admin.site.register(Gallery, GalleryAdmin)
 

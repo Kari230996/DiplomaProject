@@ -57,6 +57,8 @@
       <div class="home-container">
 
         <!-- Navigator -->
+        {% load static %}
+
         {% include 'inc/_nav.html' %}
 
         {% block extra_head %} {% endblock %}
@@ -70,8 +72,8 @@
         </div>
 
         {% block extra_js %} {% endblock %}
-
         {% include 'inc/_footer.html' %}
+        
       </div>
     </div>
   <script
@@ -87,8 +89,13 @@
   <script src="{% static 'js/jquery.validate.min.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
 
-    
+
+  
 
     
   </body>
+
+  <footer>
+    
+  </footer>
 </html>

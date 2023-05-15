@@ -25,10 +25,10 @@
     }
 
 .home-container3 {
-  display: flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      height: 100vh;
       font-family: 'Roboto', sans-serif;
       line-height: 1.6;
       color: #636b6f;
@@ -66,7 +66,7 @@
     }
 
     .content form .btn {
-        background: #007BFF;
+        background: rgba(128, 128, 128, 0.5); /* Semi-transparent gray color */
         color: white;
         border: none;
         padding: 10px 20px;
@@ -75,7 +75,7 @@
     }
 
     .content form .btn:hover {
-        background: #0069d9;
+        background: rgba(128, 128, 128, 0.7); /* Slightly less transparent on hover */
     }
 
     .alert {
@@ -118,19 +118,3 @@
 </div>
 {% endblock %}
 
-<!-- {% block extra_js %}
-  <script>
-    window.addEventListener('scroll', function() {
-      var elements = document.querySelectorAll('.animated-element');
-      var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-
-      for (var i = 0; i < elements.length; i++) {
-        if (scrollPosition > 200) {
-          elements[i].classList.add('show');
-        } else {
-          elements[i].classList.remove('show');
-        }
-      }
-    });
-  </script>
-{% endblock %} -->

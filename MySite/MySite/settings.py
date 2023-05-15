@@ -174,12 +174,12 @@ customColorPalette = [
         },
     ]
 
-CKEDITOR_5_CUSTOM_CSS = 'path_to.css' # optional
+CKEDITOR_5_CUSTOM_CSS = 'static/ckeditor5/build/ckeditor.js' # optional
 #CKEDITOR_5_FILE_STORAGE = "path_to_storage.CustomStorage" # optional
 CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': ['heading', '|', 'bold', 'italic', 'link',
-                    'bulletedList', 'numberedList', 'blockQuote', 'imageUpload', ],
+                    'bulletedList', 'numberedList', 'blockQuote', 'imageUpload', 'fontFamily', 'fontColor'],
 
     },
     'extends': {

@@ -1,10 +1,11 @@
+{% load static %}
 <div class="home-container4">
     <footer class="home-footer">
       <div class="home-container5">
         <a href="{% url 'home' %}">
           <img
           alt="logo"
-          src="https://play.teleporthq.io/static/svg/default-img.svg"
+          src="{% static 'images/logo.svg' %}"
           class="home-image2"
         />
         </a>

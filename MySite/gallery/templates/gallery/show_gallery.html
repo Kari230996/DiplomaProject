@@ -7,21 +7,24 @@
 
 {% block extra_head %}
 
-<!-- Добавим стили для модального окна и анимацию-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Добавим стили для анимацию-->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
    
   
   .home-container3 {
-    box-shadow: 5px 5px 10px 0px #d4d4d4;
-
+    box-shadow: 5px 5px 10px 0px #878686;
+    
     background-color: #ffffff;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23afadb2' fill-opacity='0.17'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
+
   
-  .modal {
+  
+  #modal {
       display: none;
       position: fixed;
       z-index: 1;
@@ -73,16 +76,19 @@
   line-height: 1.5; /* Межстрочный интервал */
 }
 
-.modal-title {
+#modal-title {
   font-size: 28px; /* Увеличим размер шрифта */
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: #007BFF; /* Синий цвет для заголовка */
+  font-weight: lighter;
+  margin-bottom: 45px;
+  color: #333;
+  padding-bottom: 10px; /* Добавим отступ снизу перед линией */
+  border-bottom: 2px solid rgba(171, 171, 171, 0.5); /* Полупрозрачная синяя линия */
+  
 }
 
-.modal-desc {
+#modal-desc {
   font-size: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 120px;
 }
 
 .input-button {
@@ -110,7 +116,7 @@
       opacity: 0;
       transform: translateY(20px);
       animation: appear 1s forwards;
-      animation-delay: 0.5s; /* Add this line to delay the animation */
+      animation-delay: 0.5s; 
     }
 
     @keyframes appear {
@@ -119,6 +125,8 @@
         transform: translateY(0);
       }
     }
+
+
  
 </style>
 
@@ -132,8 +140,8 @@
 <div class="container mt-5 animated-element">
   <div class="row">
     {% for item in gallery %}
-      <div class="col-md-4 mb-4">
-        <img src="{{ item.photo.url }}" alt="{{ item.title }}" class="card-img-top gallery-img" data-img="{{ item.photo.url }}" data-title="{{ item.title }}" data-content="{{ item.content }}" data-pk="{{ item.pk }}">
+      <div data-aos='fade-up' class="col-md-4 mb-4">
+        <img src="{{ item.photo.url }}" alt="{{ item.title }}" class="card-img-top gallery-img" data-img="{{ item.photo.url }}" data-title="{{ item.title }}" data-content="{{ item.content|escapejs }}" data-pk="{{ item.pk }}">
       </div>
     {% endfor %}
   </div>
@@ -159,62 +167,78 @@
 {% block extra_js %}
 
 
-<!-- Добавим скрипты для модального окна и анимацию -->
+<!-- Добавим скрипт -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <script>
+  $(document).ready(function() {
 
-
-$(document).ready(function() {
-
-  // Добавим анимацию при наведении на картины
-  $('.gallery-img').hover(
-    function() {
-      $(this).addClass('animate__animated animate__pulse');
-
-    },
-    function() {
-      $(this).removeClass('animate__animated animate__pulse');
-    }
-  )
-
-  $('.gallery-img').click(function() {
-    var img = $(this).attr('data-img');
-    var title = $(this).attr('data-title');
-    var content = $(this).attr('data-content');
-    var pk = $(this).attr('data-pk');
-
-    $('#modal-img').attr('src', img);
-    $('#modal-title').text(title);
-    $('#modal-desc').text(content);
-    $('#modal-button').attr('data-pk', pk);
+    AOS.init({
+      duration: 2000, // длительность анимации в миллисекундах
+    });
     
-    $('#modal').show().addClass('animate__animated animate__zoomIn');
+    function unescape(escapedStr) {
+      return escapedStr.replace(/\\u([a-fA-F0-9]{4})/g, function(_, hex) {
+          return String.fromCharCode(parseInt(hex, 16));
+      });
+    }
+  
+    // Добавим анимацию при наведении на картины
+    $('.gallery-img').hover(
+      function() {
+        $(this).addClass('animate__animated animate__pulse');
+      },
+      function() {
+        $(this).removeClass('animate__animated animate__pulse');
+      }
+    )
+  
+    $('.gallery-img').click(function() {
+      var img = $(this).attr('data-img');
+      var title = $(this).attr('data-title');
+      var escapedContent = $(this).attr('data-content');
+      var content = unescape(escapedContent);
+      content = content.substring(0, 600) + '...';
+      var pk = $(this).attr('data-pk');
+
+     
+    
+
+  
+      $('#modal-img').attr('src', img);
+      $('#modal-title').text(title);
+      $('#modal-desc').html(content); 
+      $('#modal-button').attr('data-pk', pk);
+      
+      $('#modal').show().addClass('animate__animated animate__zoomIn');
+    });
+  
+    // переходим на страницу при клике на кнопку "Learn More")
+    $('#modal-button').click(function() {
+    var pk = $(this).attr('data-pk');
+    var url = '/gallery/painting/' + pk + '/';
+    window.location.href = url;
+  })
+  
+    // Закрываем модальное окно
+    $('#close-modal').click(function() {
+      $('#modal').addClass('animate__animated animate__zoomOut');
+  
+      // Даем время для завершения анимации перед скрытием модального окна
+      setTimeout(function() {
+        $('#modal').hide().removeClass('animate__animated animate__zoomIn animate__zoomOut');
+      }, 1000);
+    });
   });
-
-  // переходим на страницу при клике на кнопку "Learn More")
-  $('#modal-button').click(function() {
-  var pk = $(this).attr('data-pk');
-  var url = '/gallery/painting/' + pk + '/';
-  window.location.href = url;
-})
+  </script>
+  
 
 
-  // Закрываем модальное окно
-  $('#close-modal').click(function() {
-    $('#modal').addClass('animate__animated animate__zoomOut');
 
-    // Даем время для завершения анимации перед скрытием модального окна
-    setTimeout(function() {
-      $('#modal').hide().removeClass('animate__animated animate__zoomIn animate__zoomOut');
-    }, 1000);
-  });
-});
 
-</script>
+
+
 
 
 
