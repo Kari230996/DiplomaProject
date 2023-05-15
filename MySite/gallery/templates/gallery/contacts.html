@@ -1,67 +1,120 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
-    Contacts :: {{ block.super }}
+    Contact :: {{ block.super }}
 {% endblock %}
 
+{% block extra_head %}
+<!-- Добавим стили для этой страницы -->
+<style>
 
+.animated-element {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: appear 1s forwards;
+      animation-delay: 0.5s; /* Add this line to delay the animation */
+    }
 
-{% block content %} 
-<h1>Contact us</h1>
+    @keyframes appear {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-<form action="{% url 'contacts' %}" method="post">
+.home-container3 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #636b6f;
+      background-image: url('{% static "/images/8.png" %}');
+      background-size: cover;
+    }
 
-    {% csrf_token %}
+    .content {
+        max-width: 900px;
+        margin: 30px auto;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.15);
+    }
 
-    {{ form.as_p }}
-  
+    .content h1 {
+        color: #333;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        text-align: center;
+    }
 
+    .content form {
+        margin-top: 30px;
+    }
 
-    {% comment %}
-    {{ form.non_field.errors }}
-    <div class="mb-3">
-        <label for="{{ form.name.id_for_label }}" class="form-label">Name: </label>
-        {{ form.name }}
-        <div class="invalid-feedback">
-            {{ form.name.errors}}
-        </div>
+    .content form input, .content form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 1.1em;
+    }
 
-    
-        <label for="{{ form.email.id_for_label }}" class="form-label">Email: </label>
-        {{ form.email }}
-        <div class="invalid-feedback">
-            {{ form.email.errors}}
-        </div>
+    .content form .btn {
+        background: rgba(128, 128, 128, 0.5); /* Semi-transparent gray color */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-size: 1.1em;
+    }
 
+    .content form .btn:hover {
+        background: rgba(128, 128, 128, 0.7); /* Slightly less transparent on hover */
+    }
 
-        <label for="{{ form.subject.id_for_label }}" class="form-label">Subject: </label>
-        {{ form.subject }}
+    .alert {
+        margin-bottom: 30px;
+        padding: 15px;
+        border-radius: 4px;
+    }
 
-        <label for="{{ form.message.id_for_label }}" class="form-label">Message: </label>
-        {{ form.message }}
-        <div class="invalid-feedback">
-            {{ form.message.errors}}
-        </div>
-        
-    </div>
-    {% endcomment %}
+    .alert-success {
+        background: #d4edda;
+        border-color: #c3e6cb;
+        color: #155724;
+    }
 
-    {% comment %}
-    <div class="mb-3">
-    {% for field in form %}
-     
-       {{ field.label_tag }}
-       {{ field }}
-       <div class="invalid-feedback">
-        {{ field.errors}}
-       </div>
-
-    {% endfor %}
-    </div>
-    {% endcomment %}
-    
-
-    <button type="submit" class="btn btn-primary btn-block">Send</button>
-</form>
-
+    .alert-danger {
+        background: #f8d7da;
+        border-color: #f5c6cb;
+        color: #721c24;
+    }
+</style>
 {% endblock %}
+
+{% block content %}
+<div class="content animated-element">
+    <h1>Contact us</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags == 'danger' %} alert-danger{% else %}alert-success{% endif %}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form action="{% url 'contacts' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary btn-block">Send</button>
+    </form>
+</div>
+{% endblock %}
+

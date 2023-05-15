@@ -1,10 +1,74 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
 {% block title %}
-    Contacts :: {{ block.super }}
+    About Us :: {{ block.super }}
+{% endblock %}
+
+{% block extra_head %}
+<!-- Добавим стили для этой страницы -->
+<style>
+    .home-container3 {
+        background-image: url('{% static "/images/2.jpg" %}');
+        background-size: cover;
+        
+    }
+
+    .about-us {
+        max-width: 1000px;
+        margin: auto;
+        background: rgba(255,255,255,0.9);
+        padding: 50px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    }
+
+    .about-us h1 {
+        color: #333;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+    }
+
+    .about-us p {
+        font-size: 1.2em;
+        color: #666;
+        line-height: 1.6em;
+    }
+
+    .animated-element {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: appear 1s forwards;
+      animation-delay: 0.5s; /* Add this line to delay the animation */
+    }
+
+    @keyframes appear {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="about-us animated-element">
+    <h1>About Us</h1>
+    <img src="" alt="">
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat sed cras ornare arcu dui. Accumsan tortor posuere ac ut. Dignissim sodales ut eu sem integer. Vitae tortor condimentum lacinia quis. Lorem donec massa sapien faucibus et molestie ac. Condimentum vitae sapien pellentesque habitant.  
+    </p>
+    <p>
+        Amet porttitor eget dolor morbi. Id neque aliquam vestibulum morbi. Nam at lectus urna duis convallis. Aliquet bibendum enim facilisis gravida neque convallis a. Amet aliquam id diam maecenas. Id nibh tortor id aliquet. Vestibulum mattis ullamcorper velit sed ullamcorper morbi. Nec nam aliquam sem et tortor. Semper feugiat nibh sed pulvinar proin gravida hendrerit. At tellus at urna condimentum mattis pellentesque id nibh. Dolor magna eget est lorem ipsum. Tincidunt arcu non sodales neque sodales ut etiam.
+    </p>
+    <p>
+        Thank you for choosing us, and we look forward to serving you.
+    </p>
+</div>
 {% endblock %}
 
 
 
-{% block content %} 
-<h1>About us</h1>
 
-{% endblock %}
+

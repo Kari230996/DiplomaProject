@@ -1,0 +1,18 @@
+.modal-content {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .modal-body {
+    max-height: calc(80vh - 140px);
+    overflow-y: auto;
+  }
+  
+  .modal-body p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  

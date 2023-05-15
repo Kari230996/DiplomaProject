@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home :: {{ block.super }}
+{% endblock %}
+
+{% block extra_head %}
+<style>
+  .animated-element {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s;
+}
+
+.home-button {
+  transition: opacity 1s, transform 1s;
+}
+
+.show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.home-container3 {
+  height: var(--dl-size-size-maxwidth);
+  
+}
+</style>
+{% endblock %}
+
+{% block content %} 
+
+<div class="home-hero">
+  <span class="home-text animated-element">
+    <span class="home-text1">Lorem ipsum dolor sit amet</span>
+  </span>
+  <h1 class="home-text2 animated-element">Welcome everyone</h1>
+  <a class="home-button button animated-element" href="{% url 'show_gallery' %}">Show Gallery</a>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    window.addEventListener('scroll', function() {
+      var elements = document.querySelectorAll('.animated-element');
+      var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+      for (var i = 0; i < elements.length; i++) {
+        if (scrollPosition > 200) {
+          elements[i].classList.add('show');
+        } else {
+          elements[i].classList.remove('show');
+        }
+      }
+    });
+  </script>
+{% endblock %}
