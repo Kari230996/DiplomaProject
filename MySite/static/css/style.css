@@ -276,14 +276,24 @@ body {
 }
 
 @media (max-width: 479px) {
+
+.home-container3 {
+    height: auto;
+    max-height: 100%;
+    box-shadow: 5px 5px 10px 0px rgba(212, 212, 212, 1);
+}
+
 .home-hero {
-    width: 478px;
-    height: 364px;
-    box-shadow: 5px 5px 10px 0px rgba(212, 212, 212, 0);
-    padding-top: var(--dl-space-space-twounits);
-    padding-left: var(--dl-space-space-unit);
-    padding-right: var(--dl-space-space-unit);
-    padding-bottom: 0px;
+  box-shadow: 5px 5px 10px 0px rgba(212, 212, 212, 0);
+  padding-top: var(--dl-space-space-twounits);
+  padding-left: var(--dl-space-space-unit);
+  padding-right: var(--dl-space-space-unit);
+  padding-bottom: 0px;
+  /* background-image: url(''); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+ 
 }
 }
 
@@ -308,7 +318,8 @@ body {
   flex-direction: column;
   background-size: cover;
   justify-content: center;
-  background-image: url(https://img.freepik.com/free-photo/abstract-oil-paint-textured-background_53876-163057.jpg?w=2000&t=st=1681301836~exp=1681302436~hmac=8bfab3c…);
+  background-image: url('/static/images/14.jpg');
+
 
 }
 
