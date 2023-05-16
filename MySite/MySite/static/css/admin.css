@@ -10,3 +10,7 @@
   div.breadcrumbs {
     background: #263238
   }
+
+.theme-toggle {
+  display: none;
+}

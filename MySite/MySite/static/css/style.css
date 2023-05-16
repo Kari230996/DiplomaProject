@@ -387,6 +387,17 @@ body {
     padding-left: var(--dl-space-space-twounits);
     padding-right: var(--dl-space-space-twounits);
 }
+
+.col-md-4 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.home-container3 {
+  height: auto;
+  max-height: 100%;
+}
+
 }
 
 @media (max-width: 1200px) {
@@ -435,6 +446,8 @@ body {
   width: 80%;
   max-width: 700px;
 }
+
+
 
 /* Add Animation */
 .modal-content, #caption {

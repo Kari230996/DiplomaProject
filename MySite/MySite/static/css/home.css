@@ -287,8 +287,9 @@
     box-shadow: 5px 5px 50px 0px rgba(212, 212, 212, 0);
   }
   .home-container3 {
-    height: var(--dl-size-size-maxwidth);
     border-color: rgba(120, 120, 120, 0);
+    height: auto;
+    max-height: 100%;
   }
   .home-hero {
     width: 1599px;
@@ -311,6 +312,8 @@
 @media(max-width: 1200px) {
   .home-container3 {
     box-shadow: 5px 5px 10px 0px #d4d4d4;
+    height: auto;
+    max-height: 100%;
   }
   .home-footer {
     width: 100%;
@@ -344,6 +347,11 @@
     text-align: center;
     margin-left: var(--dl-space-space-unit);
     margin-right: var(--dl-space-space-unit);
+  }
+  
+  .home-container3 {
+    height: auto;
+    max-height: 100%;
   }
 }
 @media(max-width: 479px) {
@@ -401,3 +409,4 @@
   margin-top: 3rem;
   text-align: center;
 }
+
