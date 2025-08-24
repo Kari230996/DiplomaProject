@@ -1,22 +1,29 @@
-# Geekbrains
+# GeekBrains
 
-## Специальность
+## Specialization
 
-Программирование
+Programming
 
-## Тема дипломной работы
+## Diploma Project Topic
 
-Личный сайт-портфолио
+Personal Portfolio Website
 
-## ФИО студента
+## Student Name
 
-Апаева Карина Руслановна
+Karina Ruslanovna Apaeva
 
-## Место и год написания
+## Place and Year
 
-Грузия, 2023г.
+Georgia, 2023
 
-## Аннотация
+## Annotation
 
-Данный дипломный проект посвящен разработке личного сайта-портфолио. Цель проекта - создание качественного и удобного сайта, который будет представлять автора и его работы в наилучшем свете. В работе использовались различные технологии и языки программирования, включая Django, Python, HTML, CSS, JavaScript и другие. 
-Целью создания личного сайта является продвижения своих работ и привлечения потенциальных клиентов. Данный сайт поможет продемонстрировать мои навыки и опыт работы, а также привлечь внимание потенциальных клиентов и работодателей.
+This diploma project is dedicated to the development of a personal portfolio website. The goal of the project is to create a high-quality and user-friendly site that presents the author and her work in the best possible way. Various technologies and programming languages were used, including Django, Python, HTML, CSS, JavaScript, and others.
+
+The purpose of creating the personal website is to promote my work and attract potential clients. This website helps to demonstrate my skills and experience, as well as capture the attention of potential clients and employers.
+
+---
+
+## 🌐 Project Address
+
+The project is available online at: [https://karinaapaeva.pythonanywhere.com/](https://karinaapaeva.pythonanywhere.com/)
