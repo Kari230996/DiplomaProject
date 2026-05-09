@@ -1,7 +1,8 @@
 {% load static %}
+{% load i18n %}
 
 <!doctype html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
   <head>
 
     <meta charset="utf-8">
@@ -49,7 +50,7 @@
     </style>
 
 
-    <title>{% block title %}Homepage{% endblock %}</title>
+    <title>{% block title %}{% trans "Homepage" %}{% endblock %}</title>
   </head>
   <body>  
     <div>

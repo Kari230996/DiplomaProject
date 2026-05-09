@@ -1,0 +1,164 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-09 19:41+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: MySite/settings.py:275
+msgid "English"
+msgstr "Английский"
+
+#: MySite/settings.py:276
+msgid "Russian"
+msgstr "Русский"
+
+#: gallery/forms.py:14 gallery/forms.py:18
+msgid "Name"
+msgstr "Имя"
+
+#: gallery/forms.py:25 gallery/forms.py:29
+msgid "Email"
+msgstr "Эмайл"
+
+#: gallery/forms.py:37 gallery/forms.py:41
+msgid "Subject"
+msgstr "Тема"
+
+#: gallery/forms.py:48
+msgid "Message"
+msgstr "Сообщение"
+
+#: gallery/forms.py:53
+msgid "Write your message"
+msgstr "Введите ваше сообщение"
+
+#: gallery/forms.py:59
+msgid "Captcha"
+msgstr "Капча"
+
+#: gallery/forms.py:69
+msgid "Your name shouldn't contain any number"
+msgstr "Имя не должно содержать цифры"
+
+#: gallery/templates/gallery/about_us.html:59
+#, fuzzy
+#| msgid "About"
+msgid "About Me"
+msgstr "Обо мне"
+
+#: gallery/templates/gallery/about_us.html:62
+msgid ""
+"I am a self-taught artist from Chechnya, born in 1996, working primarily "
+"with oil paints."
+msgstr ""
+"Я — художница-самоучка из Чечни, родившаяся в 1996 году, работающая "
+"преимущественно масляными красками."
+
+#: gallery/templates/gallery/about_us.html:66
+msgid ""
+"My artistic journey began from a deep emotional connection to colors, "
+"atmosphere, and storytelling through canvas. Without formal academic "
+"training, I developed my skills independently through constant practice, "
+"experimentation, and a passion for art."
+msgstr ""
+"Мой творческий путь начался с глубокой эмоциональной связи с цветом, "
+"атмосферой и историями, которые можно передать через холст. Не имея "
+"академического художественного образования, я развивала свои навыки "
+"самостоятельно — через постоянную практику, эксперименты и искреннюю любовь "
+"к искусству."
+
+#: gallery/templates/gallery/about_us.html:70
+msgid ""
+"Each painting reflects emotion, silence, mood, and my personal perception of "
+"the world around me. I enjoy creating atmospheric works that combine "
+"softness, texture, and expressive color palettes."
+msgstr ""
+"Каждая моя работа отражает эмоции, тишину, настроение и моё личное "
+"восприятие окружающего мира. Мне нравится создавать атмосферные картины, "
+"сочетающие мягкость, текстуру и выразительные цветовые сочетания."
+
+#: gallery/templates/gallery/about_us.html:74
+msgid ""
+"Art for me is not only a form of creativity, but also a way to communicate "
+"feelings that are difficult to express through words."
+msgstr ""
+"Для меня искусство — это не только форма творчества, но и способ передавать "
+"чувства, которые сложно выразить словами."
+
+#: gallery/templates/gallery/about_us.html:78
+msgid ""
+"I continue to grow, explore new techniques, and build my own artistic voice "
+"through every new work."
+msgstr ""
+"Я продолжаю развиваться, изучать новые техники и формировать собственный "
+"художественный стиль с каждой новой работой."
+
+#: gallery/templates/gallery/about_us.html:85
+msgid "Best regards, Karina Api"
+msgstr "С уважением, Карина Апи"
+
+#: gallery/templates/gallery/contacts.html:113 templates/inc/_nav.html:31
+#: templates/inc/_nav.html:102
+msgid "Contact"
+msgstr "Контакты"
+
+#: gallery/templates/gallery/contacts.html:126
+msgid "Send"
+msgstr ""
+
+#: gallery/templates/gallery/home.html:38
+msgid "Original oil paintings inspired by emotion, silence and atmosphere."
+msgstr ""
+"Оригинальные картины маслом, вдохновлённые эмоциями, тишиной и атмосферой."
+
+#: gallery/templates/gallery/home.html:40
+msgid "Welcome everyone"
+msgstr "Добро пожаловать"
+
+#: gallery/templates/gallery/home.html:41
+#, fuzzy
+#| msgid "Gallery"
+msgid "Explore Gallery"
+msgstr "Открыть галерею"
+
+#: templates/admin/base_site.html:4
+msgid "Django site admin"
+msgstr "Администрирование сайта"
+
+#: templates/admin/base_site.html:11
+msgid "Django administration"
+msgstr "Панель администратора"
+
+#: templates/base.html:53
+msgid "Homepage"
+msgstr "Главная страница"
+
+#: templates/inc/_nav.html:17 templates/inc/_nav.html:90
+#, fuzzy
+#| msgid "Homepage"
+msgid "Home"
+msgstr "Главная"
+
+#: templates/inc/_nav.html:21 templates/inc/_nav.html:94
+msgid "Gallery"
+msgstr "Галерея"
+
+#: templates/inc/_nav.html:26 templates/inc/_nav.html:98
+msgid "About"
+msgstr "Обо мне"
