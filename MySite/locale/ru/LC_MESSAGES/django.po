@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-09 19:41+0300\n"
+"POT-Creation-Date: 2026-05-13 21:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,9 +55,19 @@ msgstr "Капча"
 msgid "Your name shouldn't contain any number"
 msgstr "Имя не должно содержать цифры"
 
+#: gallery/models.py:18
+msgid "Available"
+msgstr "В наличии"
+
+#: gallery/models.py:19
+msgid "Sold"
+msgstr "Продана"
+
+#: gallery/models.py:20
+msgid "Private Collection"
+msgstr "Частная коллекция"
+
 #: gallery/templates/gallery/about_us.html:59
-#, fuzzy
-#| msgid "About"
 msgid "About Me"
 msgstr "Обо мне"
 
@@ -114,28 +123,62 @@ msgid "Best regards, Karina Api"
 msgstr "С уважением, Карина Апи"
 
 #: gallery/templates/gallery/contacts.html:113 templates/inc/_nav.html:31
-#: templates/inc/_nav.html:102
+#: templates/inc/_nav.html:120
 msgid "Contact"
 msgstr "Контакты"
 
 #: gallery/templates/gallery/contacts.html:126
 msgid "Send"
-msgstr ""
+msgstr "Отправить"
 
-#: gallery/templates/gallery/home.html:38
+#: gallery/templates/gallery/home.html:33
 msgid "Original oil paintings inspired by emotion, silence and atmosphere."
 msgstr ""
 "Оригинальные картины маслом, вдохновлённые эмоциями, тишиной и атмосферой."
 
-#: gallery/templates/gallery/home.html:40
+#: gallery/templates/gallery/home.html:35
 msgid "Welcome everyone"
 msgstr "Добро пожаловать"
 
-#: gallery/templates/gallery/home.html:41
-#, fuzzy
-#| msgid "Gallery"
+#: gallery/templates/gallery/home.html:36
 msgid "Explore Gallery"
 msgstr "Открыть галерею"
+
+#: gallery/templates/gallery/painting_detail.html:606
+msgid "Materials"
+msgstr "Материалы"
+
+#: gallery/templates/gallery/painting_detail.html:620
+msgid "Dimensions"
+msgstr "Размер"
+
+#: gallery/templates/gallery/painting_detail.html:624
+msgid "cm"
+msgstr "см"
+
+#: gallery/templates/gallery/painting_detail.html:634
+msgid "Year"
+msgstr "Год"
+
+#: gallery/templates/gallery/painting_detail.html:648
+msgid "Status"
+msgstr "Статус"
+
+#: gallery/templates/gallery/painting_detail.html:662
+msgid "Price"
+msgstr "Цена"
+
+#: gallery/templates/gallery/painting_detail.html:681
+msgid "Inspiration"
+msgstr "Вдохновение"
+
+#: gallery/templates/gallery/painting_detail.html:699
+msgid "Back"
+msgstr "Назад"
+
+#: gallery/templates/gallery/painting_detail.html:703
+msgid "Contact Artist"
+msgstr "Связаться с художником"
 
 #: templates/admin/base_site.html:4
 msgid "Django site admin"
@@ -149,16 +192,14 @@ msgstr "Панель администратора"
 msgid "Homepage"
 msgstr "Главная страница"
 
-#: templates/inc/_nav.html:17 templates/inc/_nav.html:90
-#, fuzzy
-#| msgid "Homepage"
+#: templates/inc/_nav.html:19 templates/inc/_nav.html:108
 msgid "Home"
 msgstr "Главная"
 
-#: templates/inc/_nav.html:21 templates/inc/_nav.html:94
+#: templates/inc/_nav.html:23 templates/inc/_nav.html:112
 msgid "Gallery"
 msgstr "Галерея"
 
-#: templates/inc/_nav.html:26 templates/inc/_nav.html:98
+#: templates/inc/_nav.html:27 templates/inc/_nav.html:116
 msgid "About"
 msgstr "Обо мне"

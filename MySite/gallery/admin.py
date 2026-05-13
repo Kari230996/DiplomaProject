@@ -1,57 +1,213 @@
 from django import forms
 from django.contrib import admin
-from .models import Gallery
 from django.utils.safestring import mark_safe
-from django.utils.html import mark_safe
 from django_ckeditor_5.widgets import CKEditor5Widget
 
-# Register your models here.
+from .models import Gallery, GalleryImage
+
 
 class PostAdminForm(forms.ModelForm):
-      content = forms.CharField(widget=CKEditor5Widget())
 
-      
+    content = forms.CharField(
+        widget=CKEditor5Widget(config_name='extends'),
+        required=False
+    )
 
-      class Meta:
-          model = Gallery
-          fields = '__all__'
-          widgets = {
-              "text": CKEditor5Widget(
-                  attrs={"class": "django_ckeditor_5"}, config_name="post"
-              )
-          }
+    content_ru = forms.CharField(
+        widget=CKEditor5Widget(config_name='extends'),
+        required=False
+    )
+
+    class Meta:
+        model = Gallery
+        fields = '__all__'
 
 
+class GalleryImageInline(admin.TabularInline):
 
+    model = GalleryImage
+
+    extra = 1
+
+    readonly_fields = (
+        'get_image_preview',
+    )
+
+    fields = (
+        'image',
+        'get_image_preview',
+    )
+
+    def get_image_preview(self, obj):
+
+        if obj.image:
+
+            return mark_safe(
+                f'<img src="{obj.image.url}" width="120" style="border-radius:10px;">'
+            )
+
+        return "-"
+
+    get_image_preview.short_description = 'Preview'
+
+
+@admin.register(Gallery)
 class GalleryAdmin(admin.ModelAdmin):
-    # prepopulated_fields = {"slug": ("title", )}
+
     form = PostAdminForm
+
     save_as = True
-    list_display = ('id', 'title', 'created_at', 'updated_at', 'is_published', 'get_photo', 'get_content')
-    list_display_links = ('id', 'title')
-    search_fields = ('title', 'content')
-    list_editable = ('is_published',)
-    list_filter = ('is_published',)
-    # fields = ('id', 'title', 'created_at', 'updated_at', 'is_published', 'get_photo')
-    
-  
+
+    prepopulated_fields = {
+        "slug": ("title",)
+    }
+
+    # =========================
+    # LIST PAGE
+    # =========================
+
+    list_display = (
+        'id',
+        'title',
+        'title_ru',
+        'status',
+        'price_rub',
+        'price_eur',
+        'price_usd',
+        'is_published',
+    )
+
+    list_display_links = (
+        'id',
+        'title',
+    )
+
+    search_fields = (
+        'title',
+        'title_ru',
+        'content',
+        'content_ru',
+        'materials',
+    )
+
+    list_editable = (
+        'is_published',
+    )
+
+    readonly_fields = (
+        'created_at',
+        'updated_at',
+        'get_photo',
+    )
+
+    # =========================
+    # FORM SECTIONS
+    # =========================
+
+    fieldsets = (
+
+        ('English Content', {
+            'fields': (
+                'title',
+                'content',
+                'inspiration',
+            )
+        }),
+
+        ('Russian Content', {
+            'fields': (
+                'title_ru',
+                'content_ru',
+                'inspiration_ru',
+            )
+        }),
+
+        ('Main Image', {
+            'fields': (
+                'photo',
+                'get_photo',
+            )
+        }),
+
+        ('Painting Details', {
+            'fields': (
+                'slug',
+                'width',
+                'height',
+                'materials',
+                'year_created',
+                'price_rub',
+                'price_eur',
+                'price_usd',
+                'status',
+            )
+        }),
+
+        ('Display Settings', {
+            'fields': (
+                'is_featured',
+                'is_published',
+            )
+        }),
+
+        ('Dates', {
+            'fields': (
+                'created_at',
+                'updated_at',
+            )
+        }),
+    )
+
+    inlines = [GalleryImageInline]
+
+    # =========================
+    # PREVIEW
+    # =========================
+
     def get_photo(self, obj):
+
         if obj.photo:
-            return mark_safe(f'<img src="{obj.photo.url}" width="50">')
-        else:
-            return "-"
-        
-    def get_content(self, obj):
-        return mark_safe(obj.content)
-        
-    # def content(self, obj):
-    #     return mark_safe(obj.content)
 
-    get_photo.short_description = 'Photo'
-    get_content.short_description = 'Content'
+            return mark_safe(
+                f'<img src="{obj.photo.url}" width="180" style="border-radius:14px;">'
+            )
 
-admin.site.register(Gallery, GalleryAdmin)
+        return "-"
+
+    get_photo.short_description = 'Main Photo'
+
+
+@admin.register(GalleryImage)
+class GalleryImageAdmin(admin.ModelAdmin):
+
+    list_display = (
+        'id',
+        'gallery',
+        'get_image',
+        'created_at',
+    )
+
+    search_fields = (
+        'gallery__title',
+        'gallery__title_ru',
+    )
+
+    readonly_fields = (
+        'get_image',
+    )
+
+    def get_image(self, obj):
+
+        if obj.image:
+
+            return mark_safe(
+                f'<img src="{obj.image.url}" width="120" style="border-radius:10px;">'
+            )
+
+        return "-"
+
+    get_image.short_description = 'Preview'
+
 
 admin.site.site_title = 'Gallery settings'
 admin.site.site_header = 'Gallery settings'
-

@@ -22,11 +22,6 @@ Home :: {{ block.super }}
     opacity: 1 !important;
     transform: translateY(0) !important;
   }
-
-  .home-container3 {
-    height: var(--dl-size-size-maxwidth);
-
-  }
 </style>
 {% endblock %}
 
@@ -45,17 +40,12 @@ Home :: {{ block.super }}
 
 {% block extra_js %}
 <script>
-  window.addEventListener('scroll', function () {
-    var elements = document.querySelectorAll('.animated-element');
-    var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  window.addEventListener('load', function () {
+    const elements = document.querySelectorAll('.animated-element');
 
-    for (var i = 0; i < elements.length; i++) {
-      if (scrollPosition > 200) {
-        elements[i].classList.add('show');
-      } else {
-        elements[i].classList.remove('show');
-      }
-    }
+    elements.forEach(function (element) {
+      element.classList.add('show');
+    });
   });
 </script>
 {% endblock %}
