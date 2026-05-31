@@ -6,6 +6,10 @@
 {% block extra_head %}
 
 <style>
+    * {
+        box-sizing: border-box;
+    }
+
     body {
         background:
             linear-gradient(to bottom, #f7f6f4, #efeeeb);
@@ -46,6 +50,8 @@
                 #f8f8f8,
                 #f2f1ef);
 
+        min-width: 0;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
 
@@ -85,18 +91,19 @@
 
     .thumbnail-gallery {
         width: 100%;
+        max-width: 100%;
 
         display: flex;
-
-        justify-content: center;
+        flex-wrap: nowrap;
 
         gap: 14px;
 
         overflow-x: auto;
+        overflow-y: hidden;
 
         padding-bottom: 8px;
 
-        scrollbar-width: none;
+        scrollbar-width: thin;
     }
 
     .thumbnail-gallery::-webkit-scrollbar {
@@ -125,6 +132,8 @@
 
         box-shadow:
             0 6px 18px rgba(0, 0, 0, 0.08);
+
+        flex: 0 0 auto;
     }
 
     .thumbnail:hover {
@@ -403,6 +412,12 @@
 
     @media(max-width: 1050px) {
 
+        .thumbnail {
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+        }
+
         .painting-card {
             grid-template-columns: 1fr;
         }
@@ -419,22 +434,64 @@
     @media(max-width: 650px) {
 
         .painting-page {
-            margin: 30px auto;
-            padding: 0 14px;
+            margin: 20px auto;
+            padding: 0 10px;
+        }
+
+        .painting-card {
+            width: 100%;
+            overflow: visible;
+            border-radius: 20px;
         }
 
         .painting-left {
-            padding: 20px;
+            order: 1;
+            width: 100%;
+            min-width: 0;
+            padding: 12px;
         }
 
         .painting-right {
-            padding: 28px 22px;
+            order: 2;
+            padding: 16px 10px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .painting-title {
-            font-size: 34px;
+            font-size: clamp(24px, 6vw, 28px);
+            line-height: 1.2;
 
-            line-height: 1.1;
+            word-break: break-word;
+            overflow-wrap: break-word;
+
+            text-align: center;
+
+
+
+        }
+
+        .painting-meta {
+            gap: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .painting-meta span {
+            max-width: 100%;
+            font-size: 12px;
+            padding: 8px 12px;
+        }
+
+        .painting-description {
+            font-size: 15px;
+            line-height: 1.7;
+            overflow-wrap: break-word;
+        }
+
+        .painting-inspiration-text {
+            overflow-wrap: break-word;
         }
 
         .detail-row {
@@ -454,6 +511,56 @@
         .painting-btn {
             width: 100%;
         }
+
+        .painting-description,
+        .painting-inspiration,
+        .painting-details {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .main-image-wrapper img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .thumbnail {
+            flex: 0 0 auto;
+            width: 70px;
+            height: 70px;
+            min-width: 70px;
+
+        }
+
+        .thumbnail-gallery {
+            display: flex;
+            flex-wrap: nowrap;
+
+            overflow-x: auto;
+            overflow-y: hidden;
+
+            gap: 10px;
+
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+
+            padding-bottom: 10px;
+
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .main-image-wrapper,
+        .thumbnail-gallery {
+            min-width: 0;
+        }
+
     }
 </style>
 

@@ -129,11 +129,11 @@
 
       {% csrf_token %}
 
-      <button type="submit" name="language" value="en">
+      <button type="submit" name="language" value="en" class="{% if LANGUAGE_CODE == 'en' %}active-language{% endif %}">
         English
       </button>
 
-      <button type="submit" name="language" value="ru">
+      <button type="submit" name="language" value="ru" class="{% if LANGUAGE_CODE == 'ru' %}active-language{% endif %}">
         Русский
       </button>
 
@@ -271,27 +271,42 @@
   }
 
   .mobile-language-switcher {
-    margin-top: 50px;
+
+    margin-top: auto;
+    padding-top: 30px;
+  }
+
+  .mobile-language-switcher form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
 
   .mobile-language-switcher button {
     display: block;
-
     width: 100%;
-
     margin-bottom: 12px;
-
-    border: none;
-
-    background: #f3f3f3;
-
-    padding: 14px;
-
-    border-radius: 10px;
-
-    cursor: pointer;
-
+    border: 1px solid #e5e5e5;
+    background: #ffffff;
+    color: #222;
+    font-size: 20px;
+    font-weight: 500;
     text-align: left;
+    padding: 18px 20px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+  }
+
+  .mobile-language-switcher button:hover {
+    background: #f7f7f7;
+  }
+
+  .active-language {
+    background: #222 !important;
+    color: white !important;
+    border-color: #222 !important;
   }
 
   /* RESPONSIVE */
